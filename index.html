@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Modern responsive e-commerce storefront demo" />
+  <title>ShopEase — Storefront</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="#" aria-label="ShopEase home"><span class="brand-mark">S</span> ShopEase</a>
+    <div class="nav-actions">
+      <label class="search-wrap" aria-label="Search products">
+        <span>⌕</span><input id="searchInput" type="search" placeholder="Search products..." />
+      </label>
+      <button id="cartButton" class="cart-button" aria-label="Open shopping cart">🛒 Cart <span id="cartCount">0</span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">CURATED FOR EVERYDAY</p>
+        <h1>Find your next<br /><span>favorite thing.</span></h1>
+        <p class="hero-subtitle">Thoughtfully picked essentials, standout styles, and little upgrades for your life.</p>
+        <a href="#catalog" class="hero-link">Explore collection <span>→</span></a>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-circle circle-one"></div><div class="art-circle circle-two"></div>
+        <div class="art-card"><span class="art-spark">✳</span><div class="art-product"></div><div class="art-line"></div><div class="art-line short"></div></div>
+        <span class="floating-tag">NEW FINDS ✦</span>
+      </div>
+    </section>
+
+    <section id="catalog" class="catalog-section">
+      <div class="section-heading">
+        <div><p class="eyebrow">THE COLLECTION</p><h2>Shop all products</h2></div>
+        <p id="resultCount" class="result-count">Loading products…</p>
+      </div>
+      <div id="categoryFilters" class="filters" aria-label="Filter by category">
+        <button class="filter-button active" data-category="all">All products</button>
+        <button class="filter-button" data-category="electronics">Electronics</button>
+        <button class="filter-button" data-category="jewelery">Jewelry</button>
+        <button class="filter-button" data-category="men's clothing">Men's clothing</button>
+        <button class="filter-button" data-category="women's clothing">Women's clothing</button>
+      </div>
+      <div id="statusMessage" class="status-message">Fetching products from FakeStoreAPI…</div>
+      <div id="productGrid" class="product-grid"></div>
+    </section>
+  </main>
+
+  <footer><a class="brand footer-brand" href="#"><span class="brand-mark">S</span> ShopEase</a><p>Demo storefront · Powered by FakeStoreAPI</p></footer>
+
+  <div id="drawerOverlay" class="overlay"></div>
+  <aside id="cartDrawer" class="cart-drawer" aria-label="Shopping cart" aria-hidden="true">
+    <div class="drawer-header"><div><p class="eyebrow">YOUR SELECTION</p><h2>Your cart <span id="drawerCount">(0)</span></h2></div><button id="closeCart" class="icon-button" aria-label="Close cart">✕</button></div>
+    <div id="cartItems" class="cart-items"></div>
+    <div id="emptyCart" class="empty-cart"><span>🛍️</span><h3>Your cart is waiting</h3><p>Add something you love to get started.</p><button id="continueShopping" class="primary-button">Continue shopping</button></div>
+    <div id="cartSummary" class="cart-summary">
+      <div class="summary-row"><span>Subtotal</span><span id="subtotal">$0.00</span></div>
+      <div class="summary-row"><span>Estimated tax (8%)</span><span id="tax">$0.00</span></div>
+      <div class="summary-row"><span>Shipping</span><span id="shipping">$0.00</span></div>
+      <div class="summary-row total-row"><span>Total</span><strong id="total">$0.00</strong></div>
+      <button id="checkoutButton" class="primary-button full-width">Checkout <span>→</span></button>
+      <p class="secure-note">🔒 This is a demo checkout. No payment is taken.</p>
+    </div>
+  </aside>
+
+  <div id="checkoutModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+    <div class="checkout-modal">
+      <button id="closeModal" class="icon-button modal-close" aria-label="Close checkout">✕</button>
+      <div id="checkoutFormView">
+        <p class="eyebrow">ALMOST YOURS</p><h2 id="checkoutTitle">Checkout</h2>
+        <p class="modal-description">Enter your details to place a demo order.</p>
+        <form id="checkoutForm">
+          <label>Full name<input name="name" required placeholder="Alex Morgan" /></label>
+          <label>Email address<input name="email" type="email" required placeholder="alex@example.com" /></label>
+          <label>Delivery address<textarea name="address" required rows="2" placeholder="Street, city, postal code"></textarea></label>
+          <div class="modal-total"><span>Order total</span><strong id="modalTotal">$0.00</strong></div>
+          <button class="primary-button full-width" type="submit">Place demo order <span>→</span></button>
+        </form>
+      </div>
+      <div id="orderSuccess" class="order-success" hidden><div class="success-icon">✓</div><p class="eyebrow">ORDER CONFIRMED</p><h2>Thank you!</h2><p id="successMessage">Your demo order has been placed.</p><button id="finishOrder" class="primary-button full-width">Back to shopping</button></div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
